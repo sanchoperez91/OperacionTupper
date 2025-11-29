@@ -1,0 +1,35 @@
+﻿@model IEnumerable<OperacionTupper2._0.Models.Ingrediente>
+
+@{
+    ViewData["Title"] = "Platos";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Añadir </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreIngrediente)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreIngrediente)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdIngrediente">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdIngrediente">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdIngrediente">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

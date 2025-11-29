@@ -1,0 +1,12 @@
+.sinHipervinculo {
+    text-decoration: none;
+}
+
+.iconoCrud {
+    width: 1rem;
+    height: 1rem;
+}
+    .iconoCrud:hover {
+        cursor: pointer;
+        height: 1.3rem;
+    }

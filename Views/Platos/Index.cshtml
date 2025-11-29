@@ -1,0 +1,80 @@
+﻿@model IEnumerable<OperacionTupper2._0.Models.Plato>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Nuestro platos</h1>
+
+<p>
+    <a asp-action="Create" class="sinHipervinculo"><h3>Añadir</h3></a>
+</p>
+<div id="buscadorContainer">
+    <form asp-action="Buscar" asp-controller="PlatosController" method="get" id="buscadorForm">
+        <input type="text" name="busqueda" placeholder="Buscar..." />
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraComida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcompanamientoPrincipal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlatoUnico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrupoNutricional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraComida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcompanamientoPrincipal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlatoUnico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrupoNutricional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPlato" class="sinHipervinculo"><img class="iconoCrud" src="~/img/edit.png"><img /></a> |
+                    <a asp-action="Details" asp-route-id="@item.IdPlato" class="sinHipervinculo"><img class="iconoCrud" src="~/img/ver.png"> <img /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdPlato" class="sinHipervinculo"><img class="iconoCrud" src="~/img/delete.png"> <img /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+ <link rel="stylesheet" href="~/css/estiloPlatosIndex.css" >
+

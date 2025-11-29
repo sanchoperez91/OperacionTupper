@@ -1,0 +1,89 @@
+﻿@model OperacionTupper2._0.ViewModels.PlatoEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Plato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Plato.IdPlato" />
+            <div class="form-group">
+                <label asp-for="Plato.NombrePlato" class="control-label"></label>
+                <input asp-for="Plato.NombrePlato" class="form-control" />
+                <span asp-validation-for="Plato.NombrePlato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plato.HoraComida"></label>
+                <select asp-for="Plato.HoraComida" class="form-control" asp-items="Html.GetEnumSelectList<Hora>()">
+                    <option value="">-- Selecciona --</option>
+                </select>
+                <span asp-validation-for="Plato.HoraComida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plato.AcompanamientoPrincipal" class="control-label"></label>
+                <select asp-for="Plato.AcompanamientoPrincipal" class="form-control" asp-items="Html.GetEnumSelectList<Acompanamiento>()">
+                    <option value="">-- Selecciona --</option>
+                </select>
+                <span asp-validation-for="Plato.AcompanamientoPrincipal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plato.PlatoUnico" class="control-label"></label>
+                <select asp-for="Plato.PlatoUnico" class="form-control" asp-items="Html.GetEnumSelectList<Unico>()">
+                    <option value="">-- Selecciona --</option>
+                </select>
+                <span asp-validation-for="Plato.PlatoUnico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plato.GrupoNutricional" class="control-label"></label>
+                <select asp-for="Plato.GrupoNutricional" class="form-control" asp-items="Html.GetEnumSelectList<Nutricional>()">
+                    <option value="">-- Selecciona --</option>
+                </select>
+                <span asp-validation-for="Plato.GrupoNutricional" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plato.Descripcion" class="control-label"></label>
+                <input asp-for="Plato.Descripcion" class="form-control" />
+                <span asp-validation-for="Plato.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plato.Url" class="control-label"></label>
+                <input asp-for="Plato.Url" class="form-control" />
+                <span asp-validation-for="Plato.Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Ingredientes</label>
+                <div>
+                    @foreach (var ing in Model.IngredientesDisponibles)
+                    {
+                        var isChecked = Model.IngredienteIds.Contains(int.Parse(ing.Value));
+
+                        <label style="display:block;">
+                            <input type="checkbox"
+                                   name="IngredienteIds"
+                                   value="@ing.Value"
+                                   @(isChecked ? "checked" : "") />
+                            @ing.Text
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

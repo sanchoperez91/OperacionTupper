@@ -1,0 +1,76 @@
+﻿@model OperacionTupper2._0.Models.Plato
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Plato</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombrePlato)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombrePlato)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HoraComida)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HoraComida)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AcompanamientoPrincipal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AcompanamientoPrincipal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PlatoUnico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PlatoUnico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GrupoNutricional)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GrupoNutricional)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+    </dl>
+    <h4>Ingredientes</h4>
+
+    @if (Model.PlatosIngredientes != null && Model.PlatosIngredientes.Any())
+    {
+        <ul>
+            @foreach (var pi in Model.PlatosIngredientes)
+            {
+                <li>@pi.Ingrediente.NombreIngrediente</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No hay ingredientes asociados a este plato.</p>
+    }
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdPlato">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
