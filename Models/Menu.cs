@@ -10,7 +10,7 @@ namespace OperacionTupper2._0.Models
         [StringLength(1000)]
         [Display(Name = "Nombre Menú")]
         public string NombreMenu { get; set; } = string.Empty;
-        [Display(Name = "Numero de Días menu ")]
+        [Display(Name = "Numero de Días")]
         [Required]
         public int DiasMenu { get; set; }
 
